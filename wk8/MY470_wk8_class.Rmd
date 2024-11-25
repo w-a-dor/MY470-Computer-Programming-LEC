@@ -359,6 +359,19 @@ print(ls)
 
 _Your cell here._
 
+```{r}
+ls <- c()
+
+for (i in 0:100) {
+    if (i %% 3 == 0) {
+        ls <- c(ls, NA)
+    } else {
+        ls <- c(ls, i)
+    }
+}
+print(ls)
+```
+
 ```python
 # Exercise 2: Sum the even integers from the list below.
 
@@ -372,6 +385,21 @@ print(summ)
 ```
 
 _Your cell here._
+
+```{r}
+lst <- c(1, 3, 2, 4.5, 7, 8, 10, 3, 5, 4, 7, 3.33)
+
+sum <- 0
+
+for (i in lst) {
+  if (i %% 2 == 0) {
+    sum <- sum + i
+    }
+}
+
+sum <- sum(lst[lst %% 2 == 0])
+```
+
 
 ### Function Exercises
 
@@ -395,6 +423,19 @@ print(zerolist)
 ```
 
 _Your cell here._
+```{r}
+mylist <- c(1, 2, 3)
+
+zero_list <- function(alist) {
+  newlist <- numeric(length(alist))
+  return(newlist)
+    }
+
+zerolist <- zero_list(mylist)
+print(mylist)
+print(zerolist)
+```
+
 
 ```python
 # Exercise 4
@@ -414,7 +455,25 @@ print_professions(scientists)
 ```
 
 _Your cell here._
+```{r}
+scientists <- list('Alan Turing' = 'mathematician', 
+                   'Richard Feynman' = 'physicist',
+                   'Marie Curie' = 'chemist', 
+                   'Charles Darwin' = 'biologist',
+                   'Ada Lovelace' = 'mathematician', 
+                   'Werner Heisenberg' = 'physicist')
 
+print_professions <- function(dic) {
+  for (name in names(dic)) {
+    print(paste0(name, " was a ", dic[[name]], "."))
+  }
+}
+
+print_professions(scientists)
+```
+
+
+```{r}
 ### Vectorizing Exercises
 
 Vectorizing is a efficient alternative to for-loops in R. Vectorization is the operation of converting repeated operations on simple numbers (“scalars”) into single operations on vectors or matrices. 
@@ -435,6 +494,15 @@ lst = [1, 3, 2, 4.5, 7, 8, 10, 3, 5, 4, 7, 3.33]
 ans = [i**2 for i in lst if type(i) == int] 
 ```
 _Your cell here._
+```{r}
+lst <- c(1, 3, 2, 4.5, 7, 8, 10, 3, 5, 4, 7, 3.33)
+
+is_integer <- lst == floor(lst)
+ans <- ifelse(is_integer, lst^2, lst)
+  
+ans
+```
+
 
 ```python
 # Exercise 6: Using the function ifelse(), replicate the list comprehension below
@@ -445,6 +513,13 @@ x = np.random.normal(0, 1, 100)
 y = ["Positive" if i > 0 else "Negative" for i in x]
 ```
 _Your cell here._
+```{r}
+x <- rnorm(100)
+positive <- x > 0
+y <- ifelse(positive, "Positive", "Negative")
+head(y)
+```
+
 
 ```{r}
 # Exercise 7: Vectorize the code below. This is a bad loop with 'growing' data.
